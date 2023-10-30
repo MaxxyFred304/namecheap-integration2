@@ -11,7 +11,7 @@ def create_namecheap_cname(api_user, api_key, user_name, client_ip, domain, subd
             # Convert XML to JSON
             response_json = xmltodict.parse(response.text)
 
-            # Check if the CNAME creation was successful (modify this based on the actual JSON structure)
+            # Checking if the CNAME creation was successful
             success = response_json.get('YourSuccessKey', {}).get('@Value', '').lower() == 'true'
 
             return success

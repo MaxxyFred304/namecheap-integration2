@@ -92,10 +92,10 @@ def create_subdomain_endpoint(username: str):
 
 @app.post("/purchase_domain/{domain_name}")
 def purchase_domain_endpoint(domain_name: str):
-    api_user = 'yourNamecheapApiUser'
-    api_key = 'yourNamecheapApiKey'
-    user_name = 'yourNamecheapUserName'
-    client_ip = 'yourClientIp'
+    api_user = 'NamecheapApiUser'
+    api_key = 'NamecheapApiKey'
+    user_name = 'NamecheapUserName'
+    client_ip = 'ClientIp'
 
     purchase_result = purchase_domain(api_user, api_key, user_name, client_ip, domain_name)
     return {"purchase_result": purchase_result}
