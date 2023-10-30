@@ -50,7 +50,7 @@ def create_and_assign_cname(api_user, api_key, user_name, client_ip, purchased_d
             # Convert XML to JSON
             response_json = xmltodict.parse(response.text)
 
-            # Check if the CNAME creation was successful (modify this based on the actual JSON structure)
+            # Checking if the CNAME creation was successful
             success = response_json.get('YourSuccessKey', {}).get('@Value', '').lower() == 'true'
 
             return success
