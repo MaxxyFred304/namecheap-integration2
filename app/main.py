@@ -7,12 +7,12 @@ from .heroku_integration import create_heroku_subdomain, acquire_cname
 
 app = FastAPI()
 
-namecheap_api_user = 'yourNamecheapApiUser'
-namecheap_api_key = 'yourNamecheapApiKey'
-namecheap_user_name = 'yourNamecheapUserName'
-namecheap_client_ip = 'yourClientIp'
-heroku_api_key = 'yourHerokuApiKey'
-heroku_app_name = 'yourHerokuAppName'
+namecheap_api_user = 'NamecheapApiUser'
+namecheap_api_key = 'NamecheapApiKey'
+namecheap_user_name = 'NamecheapUserName'
+namecheap_client_ip = 'ClientIp'
+heroku_api_key = 'HerokuApiKey'
+heroku_app_name = 'HerokuAppName'
 
 @app.get("/")
 def read_root():
