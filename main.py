@@ -2,8 +2,8 @@ import requests
 import xmltodict
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
-from .namecheap_integration import get_domain_suggestions, check_domain_availability, markup_pricing, display_pricing, purchase_domain
-from .heroku_integration import create_heroku_subdomain, acquire_cname
+from namecheap_integration import get_domain_suggestions, check_domain_availability, markup_pricing, display_pricing, purchase_domain
+from heroku_integration import create_heroku_subdomain, acquire_cname
 
 app = FastAPI()
 
