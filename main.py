@@ -30,12 +30,6 @@ def check_domain_availability_endpoint(domain_name: str):
 
 @app.post("/purchase_domain/{domain_name}")
 
-
-@app.post("/create_subdomain/{username}")
-def create_subdomain_endpoint(username: str):
-    subdomain = create_heroku_subdomain(heroku_api_key, heroku_app_name, username)
-    return {"subdomain": subdomain}
-
 @app.post("/acquire_cname/{subdomain}")
 def acquire_cname_endpoint(subdomain: str):
     cname = acquire_cname(heroku_api_key, heroku_app_name, subdomain)
@@ -89,6 +83,7 @@ def create_subdomain_endpoint(username: str):
             raise HTTPException(status_code=500, detail="Failed to create Namecheap CNAME")
     else:
         raise HTTPException(status_code=500, detail="Failed to create Heroku subdomain")
+
 
 @app.post("/purchase_domain/{domain_name}")
 def purchase_domain_endpoint(domain_name: str):
