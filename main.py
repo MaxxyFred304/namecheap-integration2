@@ -7,12 +7,13 @@ from heroku_integration import create_heroku_subdomain, acquire_cname
 
 app = FastAPI()
 
-namecheap_api_user = 'NamecheapApiUser'
-namecheap_api_key = 'NamecheapApiKey'
-namecheap_user_name = 'NamecheapUserName'
-namecheap_client_ip = 'ClientIp'
+namecheap_api_user = 'MaxFred'
+namecheap_api_key = 'ceed3069274b49eb93dec32838bd80e7'
+namecheap_user_name = 'MaxFred'
+namecheap_client_ip = '41.81.9.176'
 heroku_api_key = 'HerokuApiKey'
 heroku_app_name = 'HerokuAppName'
+
 
 @app.get("/")
 def read_root():
@@ -20,19 +21,19 @@ def read_root():
 
 @app.get("/suggest_domains/{business_name}")
 def suggest_domains_endpoint(business_name: str):
-    suggestions = get_domain_suggestions(business_name)
+    suggestions = get_domain_suggestions(namecheap_api_user,namecheap_api_key, namecheap_user_name, namecheap_client_ip, business_name)
     return {"suggestions": suggestions}
+
+suggested_domains = ''
 
 @app.get("/check_domain_availability/{domain_name}")
 def check_domain_availability_endpoint(domain_name: str):
-    availability = check_domain_availability(domain_name)
+    availability = check_domain_availability(namecheap_api_user, namecheap_api_key,namecheap_client_ip, domain_name, suggested_domains)
     return {"availability": availability}
-
-@app.post("/purchase_domain/{domain_name}")
 
 @app.post("/acquire_cname/{subdomain}")
 def acquire_cname_endpoint(subdomain: str):
-    cname = acquire_cname(heroku_api_key, heroku_app_name, subdomain)
+    cname = acquire_cname(heroku_api_key, subdomain)
     return {"cname": cname}
 
 heroku_api_key = ''
@@ -87,10 +88,10 @@ def create_subdomain_endpoint(username: str):
 
 @app.post("/purchase_domain/{domain_name}")
 def purchase_domain_endpoint(domain_name: str):
-    api_user = 'NamecheapApiUser'
-    api_key = 'NamecheapApiKey'
-    user_name = 'NamecheapUserName'
-    client_ip = 'ClientIp'
+    api_user = 'MaxFred'
+    api_key = 'ceed3069274b49eb93dec32838bd80e7'
+    user_name = 'MaxFred'
+    client_ip = '41.81.9.176'
 
     purchase_result = purchase_domain(api_user, api_key, user_name, client_ip, domain_name)
     return {"purchase_result": purchase_result}

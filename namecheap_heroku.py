@@ -2,7 +2,7 @@ import requests
 import xmltodict
 
 def create_namecheap_cname(api_user, api_key, user_name, client_ip, domain, subdomain, target):
-    api_url = f'https://api.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.dns.create&ClientIp={client_ip}&SLD={subdomain}&TLD={domain}&RecordType=CNAME&HostName={subdomain}&Address={target}&TTL=1800'
+    api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.dns.create&ClientIp={client_ip}&SLD={subdomain}&TLD={domain}&RecordType=CNAME&HostName={subdomain}&Address={target}&TTL=1800'
 
     response = requests.get(api_url)
 
@@ -26,7 +26,7 @@ def create_namecheap_cname(api_user, api_key, user_name, client_ip, domain, subd
 
 def create_and_assign_cname(api_user, api_key, user_name, client_ip, purchased_domain, heroku_subdomain, heroku_cname_target):
     # Your existing code for Namecheap API
-    namecheap_api_url = f'https://api.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.dns.create&ClientIp={client_ip}&SLD={heroku_subdomain}&TLD={purchased_domain}&RecordType=CNAME&HostName={heroku_subdomain}&Address={heroku_cname_target}&TTL=1800'
+    namecheap_api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.dns.create&ClientIp={client_ip}&SLD={heroku_subdomain}&TLD={purchased_domain}&RecordType=CNAME&HostName={heroku_subdomain}&Address={heroku_cname_target}&TTL=1800'
 
     namecheap_response = requests.get(namecheap_api_url)
 

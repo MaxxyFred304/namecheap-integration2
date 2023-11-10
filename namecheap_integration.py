@@ -2,7 +2,7 @@ import requests
 import xmltodict
 
 def get_domain_suggestions(api_user, api_key, user_name, client_ip, business_name):
-    api_url = f'https://api.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.tld.getList&ClientIp={client_ip}&SearchTerm={business_name}'
+    api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.getList&ClientIp={client_ip}&SearchTerm={business_name}'
 
     response = requests.get(api_url)
 
@@ -28,7 +28,7 @@ def check_domain_availability(api_user, api_key, user_name, client_ip, suggested
     availability_results = {}
 
     for domain in suggested_domains:
-        api_url = f'https://api.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.check&ClientIp={client_ip}&DomainName={domain}'
+        api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.check&ClientIp={client_ip}&DomainName={domain}'
 
         response = requests.get(api_url)
 
@@ -74,7 +74,7 @@ def display_domain_suggestions(suggestions):
         print("No suggestions available.")
 
 def purchase_domain(api_user, api_key, user_name, client_ip, domain_name):
-    api_url = f'https://api.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.create&ClientIp={client_ip}&DomainName={domain_name}&Years=1'
+    api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.create&ClientIp={client_ip}&DomainName={domain_name}&Years=1'
 
     response = requests.get(api_url)
 
@@ -98,11 +98,11 @@ def purchase_domain(api_user, api_key, user_name, client_ip, domain_name):
 
 if __name__ == "__main__":
     # Add the Prompt values.
-    api_user = ''
-    api_key = ''
-    user_name = ''
-    client_ip = ''
-    business_name = ''
+    api_user = 'MaxFred'
+    api_key = 'ceed3069274b49eb93dec32838bd80e7'
+    user_name = 'MaxFred'
+    client_ip = '41.81.45.176'
+    business_name = 'agulhas'
 
     # Get domain suggestions
     suggestions = get_domain_suggestions(api_user, api_key, user_name, client_ip, business_name)
