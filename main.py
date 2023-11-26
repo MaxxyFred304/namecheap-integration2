@@ -5,12 +5,13 @@ from fastapi.responses import JSONResponse
 from namecheap_integration import get_domain_suggestions, check_domain_availability, markup_pricing, display_pricing, purchase_domain
 from heroku_integration import create_heroku_subdomain, acquire_cname
 
+
 app = FastAPI()
 
-namecheap_api_user = 'MaxFred'
-namecheap_api_key = 'ceed3069274b49eb93dec32838bd80e7'
-namecheap_user_name = 'MaxFred'
-namecheap_client_ip = '41.81.9.176'
+api_user = ''
+api_key = ''
+user_name = ''
+client_ip = ''
 heroku_api_key = 'HerokuApiKey'
 heroku_app_name = 'HerokuAppName'
 
@@ -21,7 +22,7 @@ def read_root():
 
 @app.get("/suggest_domains/{business_name}")
 def suggest_domains_endpoint(business_name: str):
-    suggestions = get_domain_suggestions(namecheap_api_user,namecheap_api_key, namecheap_user_name, namecheap_client_ip, business_name)
+    suggestions = get_domain_suggestions(api_user,api_key,user_name,client_ip, business_name)
     return {"suggestions": suggestions}
 
 suggested_domains = ''

@@ -3,6 +3,8 @@ import xmltodict
 
 def get_domain_suggestions(api_user, api_key, user_name, client_ip, business_name):
     api_url = f'https://api.sandbox.namecheap.com/xml.response?ApiUser={api_user}&ApiKey={api_key}&UserName={user_name}&Command=namecheap.domains.getList&ClientIp={client_ip}&SearchTerm={business_name}'
+    
+    print(f"API URL: {api_url}")
 
     response = requests.get(api_url)
 
@@ -101,7 +103,7 @@ if __name__ == "__main__":
     api_user = 'MaxFred'
     api_key = 'ceed3069274b49eb93dec32838bd80e7'
     user_name = 'MaxFred'
-    client_ip = '41.81.45.176'
+    client_ip = '105.160.47.84'
     business_name = 'agulhas'
 
     # Get domain suggestions
